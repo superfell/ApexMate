@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'ApexLoader' target in the 'ApexLoader' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveActiveFile</string>
+	<key>command</key>
+	<string>"$TM_BUNDLE_SUPPORT/bin/apexLoader.app/Contents/MacOS/apexLoader" runTests "$TM_SELECTED_TEXT"</string>
+	<key>input</key>
+	<string>none</string>
+	<key>name</key>
+	<string>Run Tests</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>uuid</key>
+	<string>F5A6E83D-6A06-41F2-AAA2-B4C2A0AADC49</string>
+</dict>
+</plist>

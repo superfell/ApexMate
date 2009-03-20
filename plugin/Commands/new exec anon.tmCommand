@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>beforeRunningCommand</key>
+	<string>saveActiveFile</string>
+	<key>command</key>
+	<string>"$TM_BUNDLE_SUPPORT/bin/apexLoader.app/Contents/MacOS/apexLoader" execAnon "$TM_FILEPATH"
+</string>
+	<key>fallbackInput</key>
+	<string>document</string>
+	<key>input</key>
+	<string>none</string>
+	<key>name</key>
+	<string>Execute Anonymous</string>
+	<key>output</key>
+	<string>showAsHTML</string>
+	<key>uuid</key>
+	<string>960EE079-5864-4B17-8E0C-D5225F2AB6E4</string>
+</dict>
+</plist>
