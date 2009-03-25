@@ -41,6 +41,9 @@
 	for (i = 0; i < [nodes count]; i++)
 	{
 		NSXMLNode * n = [nodes objectAtIndex:i];
+		NSXMLNode *xsiNil = [(NSXMLElement*)n attributeForLocalName:@"nil" URI:NS_URI_XSI];
+		if (xsiNil != nil && [[xsiNil stringValue] isEqualToString:@"true"]) 
+			continue;
 		o = [[ZKSObject alloc] initFromXmlNode:n];
 		[recArray addObject:o];
 		[o release];

@@ -1,4 +1,4 @@
-// Copyright (c) 2006 Simon Fell
+// Copyright (c) 2009 Simon Fell
 //
 // Permission is hereby granted, free of charge, to any person obtaining a 
 // copy of this software and associated documentation files (the "Software"), 
@@ -19,40 +19,24 @@
 // THE SOFTWARE.
 //
 
-#import "zkRunTestResult.h"
-#import "zkRunTestFailure.h"
-#import "zkCodeCoverageResult.h"
-#import "ZKCodeCoverageWarning.h"
-#import "ZKRunTestSuccess.h"
+#import <Cocoa/Cocoa.h>
+#import "zkXmlDeserializer.h"
 
-@implementation ZKRunTestResult
 
-- (NSArray *)codeCoverage {
-	return [self complexTypeArrayFromElements:@"codeCoverage" cls:[ZKCodeCoverageResult class]];
+/*
+    <xsd:sequence>
+	 <xsd:element name="id" type="tns:ID"/>
+	 <xsd:element name="message" type="xsd:string"/>
+	 <xsd:element name="name" type="xsd:string" nillable="true"/>
+	 <xsd:element name="namespace" type="xsd:string" nillable="true"/>
+	</xsd:sequence>
+*/	
+@interface ZKCodeCoverageWarning : ZKXmlDeserializer {
 }
 
-- (NSArray *)failures {
-	return  [self complexTypeArrayFromElements:@"failures" cls:[ZKRunTestFailure class]];
-}
-
-- (int)numFailures {
-	return [self integer:@"numFailures"];
-}
-
-- (int)numTestsRun {
-	return [self integer:@"numTestsRun"];
-}
-
-- (NSArray *)codeCoverageWarnings {
-	return  [self complexTypeArrayFromElements:@"codeCoverageWarnings" cls:[ZKCodeCoverageWarning class]];
-}
-
-- (NSArray *)successes {
-	return  [self complexTypeArrayFromElements:@"successes" cls:[ZKRunTestSuccess class]];
-}
-
-- (double)totalTime {
-	return [self double:@"totalTime"];
-}
+-(NSString *)id;
+-(NSString *)message;
+-(NSString *)name;
+-(NSString *)namespace;
 
 @end

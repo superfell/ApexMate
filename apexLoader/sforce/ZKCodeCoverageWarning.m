@@ -1,4 +1,4 @@
-// Copyright (c) 2006 Simon Fell
+// Copyright (c) 2009 Simon Fell
 //
 // Permission is hereby granted, free of charge, to any person obtaining a 
 // copy of this software and associated documentation files (the "Software"), 
@@ -19,40 +19,25 @@
 // THE SOFTWARE.
 //
 
-#import "zkRunTestResult.h"
-#import "zkRunTestFailure.h"
-#import "zkCodeCoverageResult.h"
 #import "ZKCodeCoverageWarning.h"
-#import "ZKRunTestSuccess.h"
 
-@implementation ZKRunTestResult
 
-- (NSArray *)codeCoverage {
-	return [self complexTypeArrayFromElements:@"codeCoverage" cls:[ZKCodeCoverageResult class]];
+@implementation ZKCodeCoverageWarning
+
+-(NSString *)id {
+	return [self string:@"id"];
 }
 
-- (NSArray *)failures {
-	return  [self complexTypeArrayFromElements:@"failures" cls:[ZKRunTestFailure class]];
+-(NSString *)message {
+	return [self string:@"message"];
 }
 
-- (int)numFailures {
-	return [self integer:@"numFailures"];
+-(NSString *)name {
+	return [self string:@"name"];
 }
 
-- (int)numTestsRun {
-	return [self integer:@"numTestsRun"];
-}
-
-- (NSArray *)codeCoverageWarnings {
-	return  [self complexTypeArrayFromElements:@"codeCoverageWarnings" cls:[ZKCodeCoverageWarning class]];
-}
-
-- (NSArray *)successes {
-	return  [self complexTypeArrayFromElements:@"successes" cls:[ZKRunTestSuccess class]];
-}
-
-- (double)totalTime {
-	return [self double:@"totalTime"];
+-(NSString *)namespace {
+	return [self string:@"namespace"];
 }
 
 @end

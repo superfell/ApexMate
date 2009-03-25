@@ -11,6 +11,8 @@
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
+		F44CD25E0F756DC90055DA23 /* ZKCodeCoverageWarning.m in Sources */ = {isa = PBXBuildFile; fileRef = F44CD25D0F756DC90055DA23 /* ZKCodeCoverageWarning.m */; };
+		F44CD2630F756EAE0055DA23 /* ZKRunTestSuccess.m in Sources */ = {isa = PBXBuildFile; fileRef = F44CD2620F756EAE0055DA23 /* ZKRunTestSuccess.m */; };
 		F489B6660CE17A0100FD8F7B /* Loader.m in Sources */ = {isa = PBXBuildFile; fileRef = F489B6650CE17A0100FD8F7B /* Loader.m */; };
 		F4EF6DD10CD8361C0053517F /* Login.nib in Resources */ = {isa = PBXBuildFile; fileRef = F4EF6DD00CD8361B0053517F /* Login.nib */; };
 		F4EF6DDB0CD837180053517F /* ZKLoginController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4EF6DDA0CD837180053517F /* ZKLoginController.m */; };
@@ -55,6 +57,10 @@
 		32CA4F630368D1EE00C91783 /* ApexLoader_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ApexLoader_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* ApexLoader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApexLoader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F44CD25C0F756DC90055DA23 /* ZKCodeCoverageWarning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKCodeCoverageWarning.h; path = ../sforce/ZKCodeCoverageWarning.h; sourceTree = SOURCE_ROOT; };
+		F44CD25D0F756DC90055DA23 /* ZKCodeCoverageWarning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZKCodeCoverageWarning.m; path = ../sforce/ZKCodeCoverageWarning.m; sourceTree = SOURCE_ROOT; };
+		F44CD2610F756EAE0055DA23 /* ZKRunTestSuccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ZKRunTestSuccess.h; path = ../sforce/ZKRunTestSuccess.h; sourceTree = SOURCE_ROOT; };
+		F44CD2620F756EAE0055DA23 /* ZKRunTestSuccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ZKRunTestSuccess.m; path = ../sforce/ZKRunTestSuccess.m; sourceTree = SOURCE_ROOT; };
 		F489B6640CE17A0100FD8F7B /* Loader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Loader.h; sourceTree = "<group>"; };
 		F489B6650CE17A0100FD8F7B /* Loader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Loader.m; sourceTree = "<group>"; };
 		F4EF6DD00CD8361B0053517F /* Login.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = Login.nib; path = ../common/Login.nib; sourceTree = SOURCE_ROOT; };
@@ -213,22 +219,13 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F4EF6DD70CD837000053517F /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				F4EF6E720CD83EE90053517F /* credential.h */,
-				F4EF6E730CD83EE90053517F /* credential.m */,
-				F4EF6DD90CD837180053517F /* ZKLoginController.h */,
-				F4EF6DDA0CD837180053517F /* ZKLoginController.m */,
-			);
-			name = Common;
-			sourceTree = "<group>";
-		};
-		F4EF6DD80CD837080053517F /* Sforce */ = {
+		F44CD24D0F756B500055DA23 /* partnerApi */ = {
 			isa = PBXGroup;
 			children = (
 				F4EF6E530CD83EB90053517F /* zkChildRelationship.h */,
 				F4EF6E540CD83EB90053517F /* zkChildRelationship.m */,
+				F4EF6DF60CD83DD30053517F /* zkSforceClient.h */,
+				F4EF6DF70CD83DD30053517F /* zkSforceClient.m */,
 				F4EF6E550CD83EB90053517F /* zkDescribeField.h */,
 				F4EF6E560CD83EB90053517F /* zkDescribeField.m */,
 				F4EF6E570CD83EB90053517F /* zkDescribeSObject.h */,
@@ -247,26 +244,55 @@
 				F4EF6E640CD83EB90053517F /* zkSObject.m */,
 				F4EF6E650CD83EB90053517F /* zkUserInfo.h */,
 				F4EF6E660CD83EB90053517F /* zkUserInfo.m */,
-				F4EF6DE40CD83DD30053517F /* zkApexClient.h */,
-				F4EF6DE50CD83DD30053517F /* zkApexClient.m */,
-				F4EF6DE60CD83DD30053517F /* zkBaseClient.h */,
-				F4EF6DE70CD83DD30053517F /* zkBaseClient.m */,
-				F4EF6DE80CD83DD30053517F /* ZKCodeCoverageResult.h */,
-				F4EF6DE90CD83DD30053517F /* ZKCodeCoverageResult.m */,
-				F4EF6DEA0CD83DD30053517F /* ZKCodeLocation.h */,
-				F4EF6DEB0CD83DD30053517F /* ZKCodeLocation.m */,
-				F4EF6DEC0CD83DD30053517F /* ZKCompileResult.h */,
-				F4EF6DED0CD83DD30053517F /* ZKCompileResult.m */,
-				F4EF6DEE0CD83DD30053517F /* zkEnvelope.h */,
-				F4EF6DEF0CD83DD30053517F /* zkEnvelope.m */,
+			);
+			name = partnerApi;
+			sourceTree = "<group>";
+		};
+		F44CD24E0F756B580055DA23 /* apexApi */ = {
+			isa = PBXGroup;
+			children = (
 				F4EF6DF00CD83DD30053517F /* zkExecuteAnonResult.h */,
 				F4EF6DF10CD83DD30053517F /* zkExecuteAnonResult.m */,
 				F4EF6DF20CD83DD30053517F /* ZKRunTestFailure.h */,
 				F4EF6DF30CD83DD30053517F /* ZKRunTestFailure.m */,
 				F4EF6DF40CD83DD30053517F /* zkRunTestResult.h */,
 				F4EF6DF50CD83DD30053517F /* zkRunTestResult.m */,
-				F4EF6DF60CD83DD30053517F /* zkSforceClient.h */,
-				F4EF6DF70CD83DD30053517F /* zkSforceClient.m */,
+				F4EF6DE80CD83DD30053517F /* ZKCodeCoverageResult.h */,
+				F4EF6DE90CD83DD30053517F /* ZKCodeCoverageResult.m */,
+				F44CD25C0F756DC90055DA23 /* ZKCodeCoverageWarning.h */,
+				F44CD25D0F756DC90055DA23 /* ZKCodeCoverageWarning.m */,
+				F4EF6DEA0CD83DD30053517F /* ZKCodeLocation.h */,
+				F4EF6DEB0CD83DD30053517F /* ZKCodeLocation.m */,
+				F4EF6DEC0CD83DD30053517F /* ZKCompileResult.h */,
+				F4EF6DED0CD83DD30053517F /* ZKCompileResult.m */,
+				F4EF6DE40CD83DD30053517F /* zkApexClient.h */,
+				F4EF6DE50CD83DD30053517F /* zkApexClient.m */,
+				F44CD2610F756EAE0055DA23 /* ZKRunTestSuccess.h */,
+				F44CD2620F756EAE0055DA23 /* ZKRunTestSuccess.m */,
+			);
+			name = apexApi;
+			sourceTree = "<group>";
+		};
+		F4EF6DD70CD837000053517F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				F4EF6E720CD83EE90053517F /* credential.h */,
+				F4EF6E730CD83EE90053517F /* credential.m */,
+				F4EF6DD90CD837180053517F /* ZKLoginController.h */,
+				F4EF6DDA0CD837180053517F /* ZKLoginController.m */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		F4EF6DD80CD837080053517F /* Sforce */ = {
+			isa = PBXGroup;
+			children = (
+				F44CD24E0F756B580055DA23 /* apexApi */,
+				F44CD24D0F756B500055DA23 /* partnerApi */,
+				F4EF6DE60CD83DD30053517F /* zkBaseClient.h */,
+				F4EF6DE70CD83DD30053517F /* zkBaseClient.m */,
+				F4EF6DEE0CD83DD30053517F /* zkEnvelope.h */,
+				F4EF6DEF0CD83DD30053517F /* zkEnvelope.m */,
 				F4EF6DF80CD83DD30053517F /* zkSoapException.h */,
 				F4EF6DF90CD83DD30053517F /* zkSoapException.m */,
 				F4EF6DFA0CD83DD30053517F /* zkXmlDeserializer.h */,
@@ -361,6 +387,8 @@
 				F4EF6E700CD83EB90053517F /* zkUserInfo.m in Sources */,
 				F4EF6E740CD83EE90053517F /* credential.m in Sources */,
 				F489B6660CE17A0100FD8F7B /* Loader.m in Sources */,
+				F44CD25E0F756DC90055DA23 /* ZKCodeCoverageWarning.m in Sources */,
+				F44CD2630F756EAE0055DA23 /* ZKRunTestSuccess.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

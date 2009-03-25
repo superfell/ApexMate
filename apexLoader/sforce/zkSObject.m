@@ -23,7 +23,7 @@
 #import "zkSObject.h"
 #import "zkQueryResult.h"
 
-static NSString * NS_URI_XSI = @"http://www.w3.org/2001/XMLSchema-instance";
+NSString * NS_URI_XSI = @"http://www.w3.org/2001/XMLSchema-instance";
 
 @implementation ZKSObject
 
@@ -83,6 +83,20 @@ static NSString * NS_URI_XSI = @"http://www.w3.org/2001/XMLSchema-instance";
 	}
 	return self;
 }
+
+-(id)initWithId:(NSString *)anId type:(NSString *)t fieldsToNull:(NSSet *)ftn fields:(NSDictionary *)f {
+	self = [super init];
+	Id = [anId copy];
+	type = [t copy];
+	fieldsToNull = [[NSMutableSet setWithSet:ftn] retain];
+	fields = [[NSMutableDictionary dictionaryWithDictionary:f] retain];
+	return self;
+}
+
+-(id)copyWithZone:(NSZone *)zone {
+	return [[ZKSObject alloc] initWithId:Id type:type fieldsToNull:fieldsToNull fields:fields];
+}
+
 
 - (void)dealloc {
 	[Id release];

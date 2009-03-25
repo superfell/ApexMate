@@ -22,6 +22,8 @@
 #import <Cocoa/Cocoa.h>
 #import "zkQueryResult.h"
 
+NSString * NS_URI_XSI;
+
 @interface ZKSObject : NSObject {
 	NSString 			*Id;
 	NSString 			*type;
