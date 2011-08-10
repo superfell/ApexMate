@@ -45,7 +45,7 @@
 - (void)setEndpointUrl {
 	[endpointUrl release];
 	NSURL *su = [NSURL URLWithString:[sforce serverUrl]];
-	endpointUrl = [[NSString stringWithFormat:@"%@://%@/services/Soap/s/17.0", [su scheme], [su host]] copy];
+	endpointUrl = [[NSString stringWithFormat:@"%@://%@/services/Soap/s/22.0", [su scheme], [su host]] copy];
 }
 
 - (ZKEnvelope *)startEnvelope {
