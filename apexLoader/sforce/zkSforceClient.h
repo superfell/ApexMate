@@ -1,4 +1,4 @@
-// Copyright (c) 2006 Simon Fell
+// Copyright (c) 2006,2011 Simon Fell
 //
 // Permission is hereby granted, free of charge, to any person obtaining a 
 // copy of this software and associated documentation files (the "Software"), 
@@ -55,6 +55,7 @@
 - (NSDictionary *)retrieve:(NSString *)fields sobject:(NSString *)sobjectType ids:(NSArray *)ids;
 - (NSArray *)create:(NSArray *)objects;
 - (NSArray *)update:(NSArray *)objects;
+- (NSArray *)upsert:(NSString *)extIdFieldName objects:(NSArray *)objects;
 - (NSArray *)delete:(NSArray *)ids;
 - (NSString *)serverTimestamp;
 

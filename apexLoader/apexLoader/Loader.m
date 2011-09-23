@@ -1,4 +1,4 @@
-// Copyright (c) 2007-2008 Simon Fell
+// Copyright (c) 2007-2008,2011 Simon Fell
 //
 // Permission is hereby granted, free of charge, to any person obtaining a 
 // copy of this software and associated documentation files (the "Software"), 
@@ -27,6 +27,8 @@
 #import "zkExecuteAnonResult.h"
 #import "zkRunTestResult.h"
 #import "zkRunTestFailure.h"
+#import "zkSObject.h"
+#import "zkSaveResult.h"
 
 @implementation Loader
 
@@ -52,6 +54,7 @@
 	switch (operation) {
 		case opPackages: return @"Compiling Apex Class";
 		case opTriggers: return @"Compiling Apex Trigger";
+		case opApexPages: return @"Deploying Apex Page";
 		case opExecAnon: return @"Execute Anonymous";
 		case opRunTests: return @"Running Apex Unit Tests";
 		case opSetKeychain: return @"Saving Credentials";
@@ -158,6 +161,27 @@
 	return -errCount;
 }
 
+-(int)loadPage:(NSString *)filename {
+	[self log:logVerbose msg:[NSString stringWithFormat:@"About to deploy apex page: %@", filename]];
+	NSArray *src = [self loadFile:filename];
+	int errCount = 0;
+	for (NSString *psrc in src) {
+		ZKSObject *page = [[[ZKSObject alloc] initWithType:@"ApexPage"] autorelease];
+		[page setFieldValue:psrc field:@"Markup"];
+		NSString *name = [[filename lastPathComponent] stringByDeletingPathExtension];
+		[page setFieldValue:name field:@"Name"];
+		[page setFieldValue:name field:@"MasterLabel"];
+		ZKSaveResult *sr = [[sforce upsert:@"Name" objects:[NSArray arrayWithObject:page]] objectAtIndex:0];
+		if (![sr success]) {
+			[self log:logError msg:[NSString stringWithFormat:@"%@ : %@", [sr statusCode], [sr message]]];
+			errCount++;
+		} else {
+			[self log:logVerbose msg:[NSString stringWithFormat:@"Success! ApexPage upserted with Id %@", [sr id]]];
+		}
+	}
+	return -errCount;
+}
+
 - (int) performOperation:(Options *)op {
 	operation = [op operation];
 	[self initOutput];
@@ -167,6 +191,8 @@
 				return [self load:[op filename] isTrigger:NO];
 			case opTriggers:
 				return [self load:[op filename] isTrigger:YES];
+			case opApexPages:
+				return [self loadPage:[op filename]];
 			case opExecAnon:
 				return [self execAnon:[op filename]];
 			case opRunTests:

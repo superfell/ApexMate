@@ -1,4 +1,4 @@
-// Copyright (c) 2007-2008 Simon Fell
+// Copyright (c) 2007-2008,2011 Simon Fell
 //
 // Permission is hereby granted, free of charge, to any person obtaining a 
 // copy of this software and associated documentation files (the "Software"), 
@@ -35,6 +35,8 @@
 		operation = opPackages;
 	else if ([p caseInsensitiveCompare:@"trigger"] == NSOrderedSame) 
 		operation = opTriggers;
+	else if ([p caseInsensitiveCompare:@"apexpage"] == NSOrderedSame)
+		operation = opApexPages;
 	else if ([p caseInsensitiveCompare:@"runTests"] == NSOrderedSame) 
 		operation = opRunTests;
 	else if ([p caseInsensitiveCompare:@"execAnon"] == NSOrderedSame) 

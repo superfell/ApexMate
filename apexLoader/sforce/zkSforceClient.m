@@ -1,4 +1,4 @@
-// Copyright (c) 2006 Simon Fell
+// Copyright (c) 2006,2011 Simon Fell
 //
 // Permission is hereby granted, free of charge, to any person obtaining a 
 // copy of this software and associated documentation files (the "Software"), 
@@ -284,6 +284,29 @@ static const int SAVE_BATCH_SIZE = 25;
 
 - (NSArray *)update:(NSArray *)objects {
 	return [self sobjectsImpl:objects name:@"update"];
+}
+
+- (NSArray *)upsert:(NSString *)extIdFieldName objects:(NSArray *)objects {
+	if (!sessionId) return NULL;
+	[self checkSession];
+	
+	ZKEnvelope *env = [[[ZKPartnerEnvelope alloc] initWithSessionAndMruHeaders:sessionId mru:updateMru clientId:clientId] autorelease];
+	[env startElement:@"upsert"];
+	[env addElement:@"externalIDFieldName" elemValue:extIdFieldName];
+	[env addElementArray:@"sobjects" elemValue:objects];
+	[env endElement:@"upsert"];
+	[env endElement:@"s:Body"];
+	
+	NSError *err = NULL;
+	NSXMLNode *cr = [self sendRequest:[env end]];
+	NSArray *resultsArr = [cr nodesForXPath:@"result" error:&err];
+	NSMutableArray *results = [NSMutableArray arrayWithCapacity:[resultsArr count]];
+	for (NSXMLNode *cr in resultsArr) {
+		ZKSaveResult * sr = [[ZKSaveResult alloc] initWithXmlElement:(NSXMLElement*)cr];
+		[results addObject:sr];
+		[sr release];
+	}
+	return results;
 }
 
 - (NSArray *)sobjectsImpl:(NSArray *)objects name:(NSString *)elemName {
