@@ -62,6 +62,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#comments</key>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#support-type-built-ins-apex</string>
 		</dict>
 		<dict>
