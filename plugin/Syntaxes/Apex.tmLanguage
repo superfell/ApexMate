@@ -62,7 +62,7 @@
 		</dict>
 		<dict>
 			<key>include</key>
-			<string>#comments</key>
+			<string>#comments</string>
 		</dict>
 		<dict>
 			<key>include</key>
