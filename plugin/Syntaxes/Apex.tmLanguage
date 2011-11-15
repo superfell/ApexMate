@@ -62,6 +62,10 @@
 		</dict>
 		<dict>
 			<key>include</key>
+			<string>#comments</string>
+		</dict>
+		<dict>
+			<key>include</key>
 			<string>#support-type-built-ins-apex</string>
 		</dict>
 		<dict>
@@ -91,6 +95,69 @@
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>comments</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>comment.block.empty.apex</string>
+					<key>match</key>
+					<string>/\*\*/</string>
+					<key>captures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.comment.apex</string>
+						</dict>
+					</dict>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#comments-inline</string>
+				</dict>
+			</array>
+		</dict>
+		<key>comments-inline</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>name</key>
+					<string>comment.block.apex</string>
+					<key>begin</key>
+					<string>/\*</string>
+					<key>end</key>
+					<string>\*/</string>
+					<key>captures</key>
+					<dict>
+						<key>0</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.comment.apex</string>
+						</dict>
+					</dict>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\s*((//).*$\n?)</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>comment.line.double-slash.apex</string>
+						</dict>
+						<key>2</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.comment.apex</string>
+						</dict>
+					</dict>
+				</dict>
+			</array>
+		</dict>
 		<key>strings</key>
 		<dict>
 			<key>patterns</key>
